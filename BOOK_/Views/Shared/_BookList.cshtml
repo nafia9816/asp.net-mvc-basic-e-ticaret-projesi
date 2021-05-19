@@ -1,0 +1,27 @@
+﻿@using BOOK_.Models;
+@model IEnumerable<BookModel>
+
+<div class="row">
+
+    @foreach (var book in Model)
+    {
+        <div class="col-md-4 mb-2">
+            <div class="card">
+                <img src="/Images/@book.Image" class="card-img" alt="@book.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@book.Name</h5>
+                    <p class="card-text">@book.Description</p>
+                    <p class="card-text">@book.Author</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted book-price">@book.Price</small>
+                    <i class="fa fa-try" aria-hidden="true"></i>
+                    <a href="/Home/Details/@book.Id" class="btn btn-warning btn-sm  pull-right">
+                        <i class="fa fa-angle-double-right" aria-hidden="true"></i> İncele</a>
+                </div>
+            </div>
+        </div>
+      
+    }
+
+</div>

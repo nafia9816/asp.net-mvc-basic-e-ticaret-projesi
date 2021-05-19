@@ -1,0 +1,29 @@
+﻿@using BOOK_.Models;
+@model IEnumerable<BookModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">Merhaba!</h1>
+        <p>En yeni ve en çok okunan kitaplar burada! Sende kitap almadan en yeni,en güncel kitapları almak istersen bu site tam sana göre. Önce biraz oku,Sonra al!
+        Kitapları kategorilerine göre listeyebilir,özetlerine göz atabilirsin. Ayrıca kitabın yazarı hakkında bilgi edinebilirsin :)</p>
+        <hr class="my-4">
+        
+        <a class="btn btn-info btn-lg" href="#" role="button">Daha Fazla...</a>
+    </div>
+</div>
+
+
+
+
+<div class="container pb-5">
+
+    @Html.Partial("_BookList", Model)
+</div>
+
+
+

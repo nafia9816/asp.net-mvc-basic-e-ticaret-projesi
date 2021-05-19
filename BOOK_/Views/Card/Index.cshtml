@@ -1,0 +1,78 @@
+﻿@model BOOK_.Models.Card
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container pb-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Alışveriş Sepeti</h2>
+            <hr />
+            @if (Model.CardLines.Count > 0)
+            {
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>adet</th>
+                            <th>ürün</th>
+                            <th>fiyat</th>
+                            <th>ara toplam</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CardLines)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="~/Images/@item.Book.Image" width="100" />
+                                </td>
+                                <td>@item.Adet</td>
+                                <td>@item.Book.Name</td>
+                                <td>@item.Book.Price</td>
+                                <td>@((item.Book.Price*item.Adet).ToString("c"))</td>
+                                <td>
+                                    @using (Html.BeginForm("RemoveFromBasket", "Card")) //kard kontrolurundan remove.. metodunun kullanarak sil diyorum
+                                    {
+                                        @Html.Hidden("Id", item.Book.Id) // yine gizli bir ıd yolluyorum cont a
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                            çıkar
+                                        </button>
+
+                                    }
+                                </td>
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5"></td>
+                            <td> @Model.Total().ToString("c")</td> <!--tostrıng c nın anlamı kulandıgın win in diline gore parabirimini direkt yazcak -->
+                        </tr>
+                    </tfoot>
+
+                </table>
+
+                <div class="text-center">
+                    <a href="/Home/List" class="btn btn-primary">
+                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>Alışverişe devam et</a>  <!-- katalog dayfasına geri donyo-->
+                    <a href="/Card/Checkout" class="btn btn-primary">
+                    <i class="fa fa-check" aria-hidden="true"></i>Alışverişi Tamamla</a>
+                </div>
+
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    sepetinizde ürün bulunmamaktadır
+                </div>
+            }
+        </div>
+    </div>
+</div>

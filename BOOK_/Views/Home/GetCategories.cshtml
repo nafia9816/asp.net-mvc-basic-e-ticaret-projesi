@@ -1,0 +1,52 @@
+﻿
+@model IEnumerable<BOOK_.Entity.Category>
+@{
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
+<!--obje turunde bitane değişken tanımladım-->
+
+
+<ul class="list-group">
+    <li class="list-group-item">
+        
+        <a href="/Home/List">Kategoriler</a>
+
+    </li>
+
+    @foreach (var item in Model)
+    {
+        if (selectedCategory != null) //obje turundekini int e cevirmemiçin once null değilse yapam lazım
+        {
+            if (item.Id == int.Parse((selectedCategory.ToString()))) //ilk once stringe cevirmecem var tipi obje demek yanı objeden int e direkt ceviremem
+            {
+                //secilen kategori ile route id si birbirine eşitse
+                <li class="list-group-item  bg-transparent">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+
+
+                    <a href="/Home/List/@item.Id">@item.Name</a>
+                </li>
+            }
+            else //egerki kategorilerde n hic biri secili değilse hiç bi satır mavı actıve yani olmasın
+            {
+                <li class="list-group-item">
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <a href="/Home/List/@item.Id">@item.Name</a>
+                </li>
+            }
+        }
+        else
+        {
+            <li class="list-group-item ">
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                <a href="/Home/List/@item.Id">@item.Name</a>
+            </li>
+        }
+        
+
+
+    }
+
+
+
+</ul>

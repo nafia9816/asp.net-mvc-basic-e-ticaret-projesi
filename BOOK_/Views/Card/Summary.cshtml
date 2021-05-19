@@ -1,0 +1,25 @@
+﻿@using BOOK_.Models
+@model BOOK_.Models.Card
+
+<style>
+
+    #cart {
+        color: white;
+        font-family:Arial;
+        font-size:24px;
+    }
+</style>
+
+
+<ul class="navbar-nav my-lg-0">
+
+    <li id="cart" class="nav-item ">
+        <a class="navbar-link" href="/Card">
+            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+            (@Model.CardLines.Count)
+        </a>
+    </li>
+
+
+
+</ul>

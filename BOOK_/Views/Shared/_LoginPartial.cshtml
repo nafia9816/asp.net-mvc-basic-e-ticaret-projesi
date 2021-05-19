@@ -1,0 +1,31 @@
+﻿<!-- layouttski navbardan kopyaladım-->
+@if (Request.IsAuthenticated)
+{
+    //autentication  true donderirse kullanıcı login olmustur
+    //kullanıcı adınıve logout linklerini cıkar
+    <li class="nav-item">
+        <a class="nav-link" href="/">@User.Identity.Name</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/Account/Logout">Logout</a>
+    </li>
+
+}
+else
+{
+
+    //kullanıcı login olmamıstır ve login le register linklerini cıkar
+    <li class="nav-item">
+        <a class="nav-link" href="/Account/Login">Login </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/Account/Register">Register </a>
+    </li>
+
+
+}
+
+
+
